@@ -14,6 +14,8 @@ jobs:
       
       - name: Install Node.js
         uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
 
       - name: Install Deps
         run: npm ci
