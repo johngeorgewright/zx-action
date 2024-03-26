@@ -1,0 +1,36 @@
+name: Pull Request
+
+on:
+  pull_request:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+
+      - name: Install ZX
+        uses: .
+
+      - name: Execute ZX
+        id: test
+        shell: zx {0}
+        run: | # javascript
+          const README = await $`cat README.md`
+          await $`echo readme=${README} >> $GITHUB_OUTPUT`
+
+      - name: Test output
+        shell: node {0}
+        run: | # javascript
+          const assert = require('assert')
+          assert.strictEqual(
+            `${{ steps.test.outputs.readme }}`,
+          `# zx-action
+          Run ZX scripts
+          `
+          )
