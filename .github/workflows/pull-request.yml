@@ -23,7 +23,7 @@ jobs:
         run: | # javascript
           import core from '@actions/core'
           const README = await $`cat README.md`
-          core.setOutput('readme', README)
+          core.setOutput('readme', README.stdout)
 
       - name: Test output
         shell: node {0}
