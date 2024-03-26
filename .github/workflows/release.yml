@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PUSH_TOKEN }}
       
       - name: Install Node.js
         uses: actions/setup-node@v4
@@ -22,3 +24,5 @@ jobs:
 
       - name: Release
         run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.PUSH_TOKEN }}
