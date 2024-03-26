@@ -22,16 +22,18 @@ jobs:
         shell: zx --install {0}
         run: | # javascript
           import core from '@actions/core'
-          const README = await $`cat README.md`
-          core.setOutput('readme', README.stdout)
+          const README = await $`cat test/fixture.md`
+          core.setOutput('test', README.stdout)
 
       - name: Test output
         shell: node {0}
         run: | # javascript
           const assert = require('assert')
           assert.strictEqual(
-            `${{ steps.test.outputs.readme }}`,
-          `# zx-action
-          Run ZX scripts
+            `${{ steps.test.outputs.test }}`,
+          `I'm a
+          multiline
+          test
+          file
           `
           )
