@@ -1,12 +1,12 @@
-# zx-action
+name: Pull Request
 
-> Run ZX scripts
+on:
+  pull_request:
 
-A little actions that installs ZX so you can use it as an action shell.
-
-## Example
-
-```yml
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -15,7 +15,7 @@ A little actions that installs ZX so you can use it as an action shell.
         uses: actions/setup-node@v4
 
       - name: Install ZX
-        uses: johngeorgewright/zx-action@v1.0.0
+        uses: ./
 
       - name: Execute ZX
         id: test
@@ -37,4 +37,3 @@ A little actions that installs ZX so you can use it as an action shell.
           file
           `
           )
-```

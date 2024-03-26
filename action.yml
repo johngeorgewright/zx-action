@@ -1,0 +1,10 @@
+name: ZX Runner
+
+description: Install and setup ZX
+
+runs:
+  using: composite
+  steps:
+    - id: executer
+      shell: bash
+      run: npm i -g zx
