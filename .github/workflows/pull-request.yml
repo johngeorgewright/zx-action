@@ -19,10 +19,11 @@ jobs:
 
       - name: Execute ZX
         id: test
-        shell: zx {0}
+        shell: zx --install {0}
         run: | # javascript
+          import core from '@actions/core'
           const README = await $`cat README.md`
-          await $`echo readme=${README} >> $GITHUB_OUTPUT`
+          core.setOutput('readme', README)
 
       - name: Test output
         shell: node {0}
