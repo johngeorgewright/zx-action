@@ -1,4 +1,4 @@
-# Warning: this project as been deprecated
+# Warning: this project has been deprecated
 
 This action is no longer needed. If you want to use zx in a workflow, use the following:
 
