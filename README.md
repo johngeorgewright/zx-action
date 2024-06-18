@@ -1,3 +1,17 @@
+# Warning: this project as been deprecated
+
+This action is no longer needed. If you want to use zx in a workflow, use the following:
+
+```yaml
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+
+      - name: Execute ZX
+        shell: npx -y zx --install {0}
+        run: |
+          await $`echo "hello world"`
+```
+
 # zx-action
 
 > Run ZX scripts

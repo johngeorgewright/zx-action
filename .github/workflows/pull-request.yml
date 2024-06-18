@@ -14,12 +14,9 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
 
-      - name: Install ZX
-        uses: ./
-
       - name: Execute ZX
         id: test
-        shell: zx --install {0}
+        shell: npx -y zx --install {0}
         run: | # javascript
           import core from '@actions/core'
           const README = await $`cat test/fixture.md`
